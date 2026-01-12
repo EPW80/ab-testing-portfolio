@@ -1,41 +1,6 @@
-type Category = 'ecommerce' | 'landing-page' | 'mobile';
-
-type MetricResult = {
-  before: number;
-  after: number;
-};
-
-type TimeMetricResult = {
-  before: string;
-  after: string;
-};
-
-type CaseStudyResults = {
-  conversionRate: MetricResult;
-  bounceRate: MetricResult;
-  avgTimeOnPage: TimeMetricResult;
-  statisticalSignificance?: number;
-};
-
-type Variant = {
-  description: string;
-  image: string;
-  screenshots?: string[];
-};
-
-type Implementation = {
-  variantA: Variant;
-  variantB: Variant;
-};
-
-type TechnicalDetails = {
-  stack: string[];
-  optimizations: string[];
-  challenges?: string[];
-};
-
-// CaseStudy type is inferred from the caseStudies array
-// Components use: type CaseStudy = typeof caseStudies[number]
+// Case studies data
+// Types are inferred from the array structure
+// Components can use: type CaseStudy = typeof caseStudies[number]
 export const caseStudies = [
   {
     id: 'ecommerce-product-page',
