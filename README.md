@@ -82,7 +82,7 @@ This portfolio demonstrates expertise in:
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/EPW80/ab-testing-portfolio.git
 cd ab-testing-portfolio
 ```
 
