@@ -3,6 +3,7 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getCaseStudyById, caseStudies } from '../data/caseStudies';
 import MetricsDashboard from '../components/case-studies/MetricsDashboard';
+import ComparisonSlider from '../components/case-studies/ComparisonSlider';
 import Button from '../components/shared/Button';
 import { ArrowLeft, Clock, Users, Code, Lightbulb, CheckCircle } from 'lucide-react';
 
@@ -115,33 +116,38 @@ const CaseStudyDetail: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <h2 className="text-2xl md:text-3xl font-heading font-bold text-secondary-900 mb-6">
-            Before vs. After
+            Interactive Before vs. After
           </h2>
+
+          {/* Interactive Comparison Slider */}
+          <div className="mb-8">
+            <ComparisonSlider
+              beforeImage={caseStudy.implementation.variantA.image}
+              afterImage={caseStudy.implementation.variantB.image}
+              beforeLabel="Control (Version A)"
+              afterLabel="Optimized (Version B)"
+            />
+            <p className="text-sm text-secondary-600 text-center mt-4">
+              Drag the slider or use arrow keys to compare versions
+            </p>
+          </div>
+
+          {/* Implementation Details */}
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-secondary-900">Control (Version A)</h3>
-              <div className="bg-secondary-100 rounded-lg overflow-hidden">
-                <img
-                  src={caseStudy.implementation.variantA.image}
-                  alt="Control version"
-                  className="w-full h-auto"
-                  loading="lazy"
-                />
-              </div>
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold text-secondary-900 flex items-center">
+                <span className="inline-block w-3 h-3 bg-red-500 rounded-full mr-2"></span>
+                Control (Version A)
+              </h3>
               <p className="text-secondary-700 leading-relaxed">
                 {caseStudy.implementation.variantA.description}
               </p>
             </div>
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-secondary-900">Optimized (Version B)</h3>
-              <div className="bg-secondary-100 rounded-lg overflow-hidden">
-                <img
-                  src={caseStudy.implementation.variantB.image}
-                  alt="Optimized version"
-                  className="w-full h-auto"
-                  loading="lazy"
-                />
-              </div>
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold text-secondary-900 flex items-center">
+                <span className="inline-block w-3 h-3 bg-success-500 rounded-full mr-2"></span>
+                Optimized (Version B)
+              </h3>
               <p className="text-secondary-700 leading-relaxed">
                 {caseStudy.implementation.variantB.description}
               </p>

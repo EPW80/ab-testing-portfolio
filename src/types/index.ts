@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export type Category = 'ecommerce' | 'landing-page' | 'mobile';
 
 export interface MetricResult {
@@ -54,14 +56,14 @@ export interface CaseStudy {
 export interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
-  children: React.ReactNode;
+  children: ReactNode;
   onClick?: () => void;
   className?: string;
   href?: string;
 }
 
 export interface CardProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   onClick?: () => void;
   hover?: boolean;
@@ -71,6 +73,6 @@ export interface MetricCardProps {
   label: string;
   value: string | number;
   change?: number;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   className?: string;
 }

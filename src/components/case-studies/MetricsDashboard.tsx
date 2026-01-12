@@ -1,7 +1,23 @@
 import React from 'react';
-import { CaseStudyResults } from '../../types';
 import MetricCard from '../shared/MetricCard';
 import { TrendingUp, TrendingDown, Clock, Award } from 'lucide-react';
+
+type MetricResult = {
+  before: number;
+  after: number;
+};
+
+type TimeMetricResult = {
+  before: string;
+  after: string;
+};
+
+type CaseStudyResults = {
+  conversionRate: MetricResult;
+  bounceRate: MetricResult;
+  avgTimeOnPage: TimeMetricResult;
+  statisticalSignificance?: number;
+};
 
 interface MetricsDashboardProps {
   results: CaseStudyResults;

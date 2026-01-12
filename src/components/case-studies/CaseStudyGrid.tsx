@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { caseStudies } from '../../data/caseStudies';
-import { Category } from '../../types';
 import CaseStudyCard from './CaseStudyCard';
 
+type Category = 'ecommerce' | 'landing-page' | 'mobile';
 type FilterOption = 'all' | Category;
 
 const CaseStudyGrid: React.FC = () => {

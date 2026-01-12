@@ -1,6 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { MetricCardProps } from '../../types';
 import { ArrowUp, ArrowDown } from 'lucide-react';
+
+interface MetricCardProps {
+  label: string;
+  value: string | number;
+  change?: number;
+  icon?: React.ReactNode;
+  className?: string;
+}
 
 const MetricCard: React.FC<MetricCardProps> = ({
   label,

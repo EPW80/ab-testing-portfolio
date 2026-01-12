@@ -1,6 +1,14 @@
 import React from 'react';
-import { ButtonProps } from '../../types';
 import { Link } from 'react-router-dom';
+
+interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  children: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
+  href?: string;
+}
 
 const Button: React.FC<ButtonProps> = ({
   variant = 'primary',

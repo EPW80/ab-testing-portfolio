@@ -9,6 +9,7 @@ const Navigation: React.FC = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Case Studies', path: '/#case-studies' },
+    { name: 'About', path: '/about' },
   ];
 
   const isActive = (path: string) => {

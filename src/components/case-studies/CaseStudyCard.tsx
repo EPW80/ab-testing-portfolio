@@ -1,8 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { CaseStudy } from '../../types';
+import { caseStudies } from '../../data/caseStudies';
 import { ArrowRight, TrendingUp } from 'lucide-react';
+
+type CaseStudy = typeof caseStudies[number];
 
 interface CaseStudyCardProps {
   caseStudy: CaseStudy;

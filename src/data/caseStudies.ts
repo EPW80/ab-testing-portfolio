@@ -1,6 +1,57 @@
-import { CaseStudy } from '../types';
+type Category = 'ecommerce' | 'landing-page' | 'mobile';
 
-export const caseStudies: CaseStudy[] = [
+type MetricResult = {
+  before: number;
+  after: number;
+};
+
+type TimeMetricResult = {
+  before: string;
+  after: string;
+};
+
+type CaseStudyResults = {
+  conversionRate: MetricResult;
+  bounceRate: MetricResult;
+  avgTimeOnPage: TimeMetricResult;
+  statisticalSignificance?: number;
+};
+
+type Variant = {
+  description: string;
+  image: string;
+  screenshots?: string[];
+};
+
+type Implementation = {
+  variantA: Variant;
+  variantB: Variant;
+};
+
+type TechnicalDetails = {
+  stack: string[];
+  optimizations: string[];
+  challenges?: string[];
+};
+
+type CaseStudy = {
+  id: string;
+  title: string;
+  client: string;
+  category: Category;
+  thumbnail: string;
+  overview: string;
+  challenge: string;
+  hypothesis: string;
+  implementation: Implementation;
+  results: CaseStudyResults;
+  technicalDetails: TechnicalDetails;
+  keyLearnings: string[];
+  duration: string;
+  sampleSize: number;
+};
+
+export const caseStudies = [
   {
     id: 'ecommerce-product-page',
     title: 'E-commerce Product Page Optimization',
@@ -225,11 +276,11 @@ export const caseStudies: CaseStudy[] = [
   }
 ];
 
-export const getCaseStudyById = (id: string): CaseStudy | undefined => {
+export const getCaseStudyById = (id: string) => {
   return caseStudies.find(study => study.id === id);
 };
 
-export const getCaseStudiesByCategory = (category: string): CaseStudy[] => {
+export const getCaseStudiesByCategory = (category: string) => {
   if (category === 'all') return caseStudies;
   return caseStudies.filter(study => study.category === category);
 };
