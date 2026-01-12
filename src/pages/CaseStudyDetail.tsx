@@ -15,13 +15,13 @@ const CaseStudyDetail: React.FC = () => {
     return <Navigate to="/" replace />;
   }
 
-  const categoryColors = {
+  const categoryColors: Record<string, string> = {
     'ecommerce': 'bg-primary-100 text-primary-700',
     'landing-page': 'bg-accent-100 text-accent-700',
     'mobile': 'bg-orange-100 text-orange-700',
   };
 
-  const categoryLabels = {
+  const categoryLabels: Record<string, string> = {
     'ecommerce': 'E-commerce',
     'landing-page': 'Landing Page',
     'mobile': 'Mobile',

@@ -34,23 +34,8 @@ type TechnicalDetails = {
   challenges?: string[];
 };
 
-type CaseStudy = {
-  id: string;
-  title: string;
-  client: string;
-  category: Category;
-  thumbnail: string;
-  overview: string;
-  challenge: string;
-  hypothesis: string;
-  implementation: Implementation;
-  results: CaseStudyResults;
-  technicalDetails: TechnicalDetails;
-  keyLearnings: string[];
-  duration: string;
-  sampleSize: number;
-};
-
+// CaseStudy type is inferred from the caseStudies array
+// Components use: type CaseStudy = typeof caseStudies[number]
 export const caseStudies = [
   {
     id: 'ecommerce-product-page',
