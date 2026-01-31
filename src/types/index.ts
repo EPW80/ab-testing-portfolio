@@ -76,3 +76,16 @@ export interface MetricCardProps {
   icon?: ReactNode;
   className?: string;
 }
+
+export interface ProcessStep {
+  step: number;
+  title: string;
+  description: string;
+  icon: ReactNode;
+}
+
+export interface Skill {
+  name: string;
+  level: number;
+  icon: ReactNode;
+}

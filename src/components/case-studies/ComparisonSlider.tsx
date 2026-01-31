@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
 interface ComparisonSliderProps {
@@ -20,7 +20,7 @@ const ComparisonSlider: React.FC<ComparisonSliderProps> = ({
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleMove = (clientX: number) => {
+  const handleMove = useCallback((clientX: number) => {
     if (!containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
@@ -30,27 +30,27 @@ const ComparisonSlider: React.FC<ComparisonSliderProps> = ({
     // Clamp between 0 and 100
     const clampedPercentage = Math.min(Math.max(percentage, 0), 100);
     setSliderPosition(clampedPercentage);
-  };
+  }, []);
 
   const handleMouseDown = () => {
     setIsDragging(true);
   };
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setIsDragging(false);
-  };
+  }, []);
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
     if (isDragging) {
       handleMove(e.clientX);
     }
-  };
+  }, [isDragging, handleMove]);
 
-  const handleTouchMove = (e: TouchEvent) => {
+  const handleTouchMove = useCallback((e: TouchEvent) => {
     if (isDragging && e.touches.length > 0) {
       handleMove(e.touches[0].clientX);
     }
-  };
+  }, [isDragging, handleMove]);
 
   useEffect(() => {
     if (isDragging) {
@@ -66,7 +66,7 @@ const ComparisonSlider: React.FC<ComparisonSliderProps> = ({
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleMouseUp);
     };
-  }, [isDragging]);
+  }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowLeft') {

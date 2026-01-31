@@ -6,10 +6,13 @@ import MetricsDashboard from '../components/case-studies/MetricsDashboard';
 import ComparisonSlider from '../components/case-studies/ComparisonSlider';
 import Button from '../components/shared/Button';
 import { ArrowLeft, Clock, Users, Code, Lightbulb, CheckCircle } from 'lucide-react';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 const CaseStudyDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const caseStudy = id ? getCaseStudyById(id) : undefined;
+
+  useDocumentTitle(caseStudy?.title ?? 'Case Study');
 
   if (!caseStudy) {
     return <Navigate to="/" replace />;

@@ -14,8 +14,10 @@ import {
   Zap
 } from 'lucide-react';
 import Button from '../components/shared/Button';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 const About: React.FC = () => {
+  useDocumentTitle('About');
   const skills = [
     { name: 'React & TypeScript', level: 95, icon: <Code className="w-5 h-5" /> },
     { name: 'A/B Testing & Optimization', level: 90, icon: <Target className="w-5 h-5" /> },
